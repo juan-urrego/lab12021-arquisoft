@@ -6,6 +6,9 @@
 package com.udea.session;
 
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,6 +17,15 @@ import javax.ejb.Stateless;
 @Stateless
 public class TarjetaCreditoManager implements TarjetaCreditoManagerLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceContext(unitName = "com.udea_creditcard-ejb_ejb_1.0-SNAPSHOTPU")
+    private EntityManager em;
+
+    @Override
+    public boolean existTarjetaById(int id) {
+        Query query = em.createNamedQuery("TarjetaCredito.findById");
+        query.setParameter("idTarjeta", id);       
+        return !query.getResultList().isEmpty();
+    }
+    
+    
 }

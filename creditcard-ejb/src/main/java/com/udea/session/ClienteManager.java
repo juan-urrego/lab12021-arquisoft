@@ -35,6 +35,11 @@ public class ClienteManager implements ClienteManagerLocal {
         //insertar codigo
     }
 
-
+    @Override
+    public boolean existClientById(int id) {
+        return false;
+    }
     
+    
+
 }

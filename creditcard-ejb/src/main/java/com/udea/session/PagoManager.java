@@ -5,7 +5,13 @@
  */
 package com.udea.session;
 
+import com.udea.persistence.Pago;
+import java.util.List;
+import java.util.Set;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,6 +20,32 @@ import javax.ejb.Stateless;
 @Stateless
 public class PagoManager implements PagoManagerLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceContext(unitName = "com.udea_creditcard-ejb_ejb_1.0-SNAPSHOTPU")
+    private EntityManager em;
+    
+   
+    @Override
+    public Pago savePago(Pago pago) {
+        return em.merge(pago);
+    }
+
+    @Override
+    public List<Pago> getAllPagos() {
+        Query query = em.createNamedQuery("Pagos.findAll");
+        return query.getResultList();
+    }
+
+    @Override
+    public Pago getPagoById(int id) {
+        Query query = em.createNamedQuery("Pagos.findByIdPago");
+        query.setParameter("idPago", id);       
+        return (Pago) query.getSingleResult();
+    }
+    
+    
+    
+    
+    
+    
+    
 }

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <managed-bean>
+        <managed-bean-name>pagoMBean</managed-bean-name>
+        <managed-bean-class>com.udea.controller.PagoMBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/PagoList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>DETAILS</from-outcome>
+            <to-view-id>/pagoDetail.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/pagoDetail.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>LIST</from-outcome>
+            <to-view-id>/PagoList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SAVED</from-outcome>
+            <to-view-id>/PagoList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
+

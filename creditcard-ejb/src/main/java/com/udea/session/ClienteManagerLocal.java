@@ -18,5 +18,8 @@ public interface ClienteManagerLocal {
     Cliente getClienteById();
 
     void saveCliente(int idCliente, String nombreCliente, String emailCliente);
+
+    boolean existClientById(int id);
+    
     
 }

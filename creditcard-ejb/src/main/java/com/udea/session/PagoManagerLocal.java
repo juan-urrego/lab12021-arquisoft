@@ -5,6 +5,9 @@
  */
 package com.udea.session;
 
+import com.udea.persistence.Pago;
+import java.util.List;
+import java.util.Set;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +16,11 @@ import javax.ejb.Local;
  */
 @Local
 public interface PagoManagerLocal {
+
+    Pago savePago(Pago pago);
+
+    List<Pago> getAllPagos();
+
+    Pago getPagoById(int id);
     
 }
