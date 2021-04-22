@@ -5,6 +5,8 @@
  */
 package com.udea.session;
 
+import com.udea.persistence.TarjetaCredito;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,10 +24,17 @@ public class TarjetaCreditoManager implements TarjetaCreditoManagerLocal {
 
     @Override
     public boolean existTarjetaById(int id) {
-        Query query = em.createNamedQuery("TarjetaCredito.findById");
+        Query query = em.createNamedQuery("TarjetaCredito.findByIdTarjeta");
         query.setParameter("idTarjeta", id);       
         return !query.getResultList().isEmpty();
     }
+
+    @Override
+    public List<TarjetaCredito> getTarjetaCreditos() {
+        Query query= em.createNamedQuery("TarjetaCredito.findAll");
+        return query.getResultList();
+    }
+    
     
     
 }

@@ -6,12 +6,14 @@
 package com.udea.controller;
 
 import com.udea.persistence.Pago;
+import com.udea.persistence.TarjetaCredito;
 import com.udea.session.ClienteManagerLocal;
 import com.udea.session.PagoManagerLocal;
 import com.udea.session.TarjetaCreditoManagerLocal;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -65,5 +67,24 @@ public class PagoMBean implements Serializable {
     public String list(){
         return "LIST";
     }
+    
+    /*public String getTarjetaCredito() {      
+        List<TarjetaCredito> tarjetaCreditos = tarjetaCreditoManager.getTarjetaCreditos();
+        
+        return ;
+    }*/
+    
+   /* public javax.faces.model.SelectItem[] getZipCodes() {
+        SelectItem[] options = null;
+        List<MicroMarket> zipCodes = zipCodeManager.getZipCodes();
+        if (zipCodes != null && zipCodes.size() > 0) {
+            int i = 0;
+            options = new SelectItem[zipCodes.size()];
+            for (MicroMarket dc : zipCodes) {
+                options[i++] = new SelectItem(dc.getZipCode(), dc.getZipCode());
+            }
+        }
+        return options;
+    }*/
     
 }

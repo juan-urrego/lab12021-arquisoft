@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "tarjetas_creditos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TarjetasCreditos.findAll", query = "SELECT t FROM TarjetasCreditos t")
-    , @NamedQuery(name = "TarjetasCreditos.findByIdTarjeta", query = "SELECT t FROM TarjetasCreditos t WHERE t.idTarjeta = :idTarjeta")
-    , @NamedQuery(name = "TarjetasCreditos.findByCvvTarjeta", query = "SELECT t FROM TarjetasCreditos t WHERE t.cvvTarjeta = :cvvTarjeta")
-    , @NamedQuery(name = "TarjetasCreditos.findByTipoTarjeta", query = "SELECT t FROM TarjetasCreditos t WHERE t.tipoTarjeta = :tipoTarjeta")
-    , @NamedQuery(name = "TarjetasCreditos.findByFechaTarjeta", query = "SELECT t FROM TarjetasCreditos t WHERE t.fechaTarjeta = :fechaTarjeta")})
+    @NamedQuery(name = "TarjetaCredito.findAll", query = "SELECT t FROM TarjetaCredito t")
+    , @NamedQuery(name = "TarjetaCredito.findByIdTarjeta", query = "SELECT t FROM TarjetaCredito t WHERE t.idTarjeta = :idTarjeta")
+    , @NamedQuery(name = "TarjetaCredito.findByCvvTarjeta", query = "SELECT t FROM TarjetaCredito t WHERE t.cvvTarjeta = :cvvTarjeta")
+    , @NamedQuery(name = "TarjetaCredito.findByTipoTarjeta", query = "SELECT t FROM TarjetaCredito t WHERE t.tipoTarjeta = :tipoTarjeta")
+    , @NamedQuery(name = "TarjetaCredito.findByFechaTarjeta", query = "SELECT t FROM TarjetaCredito t WHERE t.fechaTarjeta = :fechaTarjeta")})
 public class TarjetaCredito implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,9 +60,9 @@ public class TarjetaCredito implements Serializable {
     private String fechaTarjeta;
     @JoinColumn(name = "clientes_id_cliente", referencedColumnName = "id_cliente")
     @ManyToOne(optional = false)
-    private Cliente clienteIdCliente;
+    private Cliente clientesIdCliente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tarjetasCreditosIdTarjeta")
-    private Collection<Pago> pagosCollection;
+    private Collection<Pago> pagoCollection;
 
     public TarjetaCredito() {
     }
@@ -110,29 +110,21 @@ public class TarjetaCredito implements Serializable {
         this.fechaTarjeta = fechaTarjeta;
     }
 
-    public Cliente getClienteIdCliente() {
-        return clienteIdCliente;
+    public Cliente getClientesIdCliente() {
+        return clientesIdCliente;
     }
 
-    public void setClienteIdCliente(Cliente clienteIdCliente) {
-        this.clienteIdCliente = clienteIdCliente;
-    }
-    
-    public int getCliente(){
-        return this.clienteIdCliente.getIdCliente();
-    }
-    
-    public void setCliente(int id){
-        this.clienteIdCliente = new Cliente(id);
+    public void setClientesIdCliente(Cliente clientesIdCliente) {
+        this.clientesIdCliente = clientesIdCliente;
     }
 
     @XmlTransient
-    public Collection<Pago> getPagosCollection() {
-        return pagosCollection;
+    public Collection<Pago> getPagoCollection() {
+        return pagoCollection;
     }
 
-    public void setPagosCollection(Collection<Pago> pagosCollection) {
-        this.pagosCollection = pagosCollection;
+    public void setPagoCollection(Collection<Pago> pagoCollection) {
+        this.pagoCollection = pagoCollection;
     }
 
     @Override
@@ -157,7 +149,7 @@ public class TarjetaCredito implements Serializable {
 
     @Override
     public String toString() {
-        return "com.udea.persistence.TarjetasCreditos[ idTarjeta=" + idTarjeta + " ]";
+        return "com.udea.persistence.TarjetaCredito[ idTarjeta=" + idTarjeta + " ]";
     }
     
 }

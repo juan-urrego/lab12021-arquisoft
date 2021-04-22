@@ -31,10 +31,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "clientes")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c")
-    , @NamedQuery(name = "Clientes.findByIdCliente", query = "SELECT c FROM Clientes c WHERE c.idCliente = :idCliente")
-    , @NamedQuery(name = "Clientes.findByEmailCliente", query = "SELECT c FROM Clientes c WHERE c.emailCliente = :emailCliente")
-    , @NamedQuery(name = "Clientes.findByNombreCliente", query = "SELECT c FROM Clientes c WHERE c.nombreCliente = :nombreCliente")})
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+    , @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente")
+    , @NamedQuery(name = "Cliente.findByEmailCliente", query = "SELECT c FROM Cliente c WHERE c.emailCliente = :emailCliente")
+    , @NamedQuery(name = "Cliente.findByNombreCliente", query = "SELECT c FROM Cliente c WHERE c.nombreCliente = :nombreCliente")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class Cliente implements Serializable {
     @Column(name = "nombre_cliente")
     private String nombreCliente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clientesIdCliente")
-    private Collection<TarjetaCredito> tarjetasCreditosCollection;
+    private Collection<TarjetaCredito> tarjetaCreditoCollection;
 
     public Cliente() {
     }
@@ -94,12 +94,12 @@ public class Cliente implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TarjetaCredito> getTarjetasCreditosCollection() {
-        return tarjetasCreditosCollection;
+    public Collection<TarjetaCredito> getTarjetaCreditoCollection() {
+        return tarjetaCreditoCollection;
     }
 
-    public void setTarjetasCreditosCollection(Collection<TarjetaCredito> tarjetasCreditosCollection) {
-        this.tarjetasCreditosCollection = tarjetasCreditosCollection;
+    public void setTarjetaCreditoCollection(Collection<TarjetaCredito> tarjetaCreditoCollection) {
+        this.tarjetaCreditoCollection = tarjetaCreditoCollection;
     }
 
     @Override
@@ -124,7 +124,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.udea.persistence.Clientes[ idCliente=" + idCliente + " ]";
+        return "com.udea.persistence.Cliente[ idCliente=" + idCliente + " ]";
     }
     
 }
