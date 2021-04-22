@@ -7,27 +7,58 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
-        
+    <h:body>                
         
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Details"/></h1>
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="IdPago:" for="idPago" />
-                    <p:inputText id="idPago" value="#{pagoMBean.GetPago().idPago}" title="IdPago" required="true" requiredMessage="The IdPago field is required."/>
-                    <p:outputLabel value="ValorPago:" for="valorPago" />
-                    <p:inputText id="valorPago" value="#{pagoMBean.GetPago().valorPago}" title="ValorPago" required="true" requiredMessage="The ValorPago field is required."/>
-                    <p:outputLabel value="TimeStampPago:" for="timeStampPago" />
-                    <p:inputText id="timeStampPago" value="#{pagoMBean.GetPago().timeStampPago}" title="TimeStampPago" required="true" requiredMessage="The TimeStampPago field is required."/>                    
-                    <p:outputLabel value="IdTarjetaCredito:" for="idTarjetaCredito" />
-                    <p:inputText id="idTarjetaCredito" value="#{pagoMBean.GetPago().idTarjetaCredito}" title="IdTarjetaCredito" />
+                    <p:outputLabel value="Identificacion de pago" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().idPago}" />
+                    
+                    <p:outputLabel value="Valor del pago" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().valorPago}" />
+                    
+                    <p:outputLabel value="Fecha de pago" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().timeStampPago}" />
+                    
+                    <p:outputLabel value="Numero de tarjeta" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().idTarjetaCredito}" />
+                    
+                    <p:outputLabel value="CVV Tarjeta" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.cvvTarjeta}" />
+                                       
+                    <p:outputLabel value="Fecha de vencimiento de tarjeta" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.fechaTarjeta}" />
+                    
+                    <p:outputLabel value="Tipo de tarjeta" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.tipoTarjeta}" />
+                    
+                    <p:outputLabel value="Nombre del Usuario" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.nombreCliente}" />
+                    
+                    <p:outputLabel value="Email del Usuario" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.emailCliente}" />
+                    
+                    <p:outputLabel value="Numero de identificacion del usuario" />
+                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.idCliente}" />
+                    
+                    <p:outputLabel value="QR code" />
+                    <p:barcode value="Identificacion del cliente: #{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.idCliente}  
+                               Valor de transferencia: #{pagoMBean.GetPago().valorPago}  
+                               Fecha de consignacion: #{pagoMBean.GetPago().timeStampPago}" 
+                              type="qr" height="150px" width="150px" /> 
+                      
                 </p:panelGrid>
+                <br></br>
+            <h:commandButton id="back" value="Back" action="#{pagoMBean.list()}"/>
             </h:form>
+
         </f:view>
+        
+        
 
     </h:body>
 </html>
