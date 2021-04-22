@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "pagos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pagos.findAll", query = "SELECT p FROM Pagos p")
-    , @NamedQuery(name = "Pagos.findByIdPago", query = "SELECT p FROM Pagos p WHERE p.idPago = :idPago")
-    , @NamedQuery(name = "Pagos.findByValorPago", query = "SELECT p FROM Pagos p WHERE p.valorPago = :valorPago")
-    , @NamedQuery(name = "Pagos.findByTimeStampPago", query = "SELECT p FROM Pagos p WHERE p.timeStampPago = :timeStampPago")})
+    @NamedQuery(name = "Pago.findAll", query = "SELECT p FROM Pago p")
+    , @NamedQuery(name = "Pago.findByIdPago", query = "SELECT p FROM Pago p WHERE p.idPago = :idPago")
+    , @NamedQuery(name = "Pago.findByValorPago", query = "SELECT p FROM Pago p WHERE p.valorPago = :valorPago")
+    , @NamedQuery(name = "Pago.findByTimeStampPago", query = "SELECT p FROM Pago p WHERE p.timeStampPago = :timeStampPago")})
 public class Pago implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -99,12 +99,8 @@ public class Pago implements Serializable {
         this.tarjetasCreditosIdTarjeta = tarjetasCreditosIdTarjeta;
     }
     
-    public int getTarjetaCredito(){
-        return this.tarjetasCreditosIdTarjeta.getIdTarjeta();
-    }
-    
-    public void setTarjetaCredito(int id) {
-        this.tarjetasCreditosIdTarjeta = new TarjetaCredito(id);
+    public int getIdTarjetaCredito(){
+        return this.getTarjetasCreditosIdTarjeta().getIdTarjeta();
     }
 
     @Override
@@ -129,7 +125,7 @@ public class Pago implements Serializable {
 
     @Override
     public String toString() {
-        return "com.udea.persistence.Pagos[ idPago=" + idPago + " ]";
+        return "com.udea.persistence.Pago[ idPago=" + idPago + " ]";
     }
     
 }

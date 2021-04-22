@@ -31,13 +31,13 @@ public class PagoManager implements PagoManagerLocal {
 
     @Override
     public List<Pago> getAllPagos() {
-        Query query = em.createNamedQuery("Pagos.findAll");
+        Query query = em.createNamedQuery("Pago.findAll");
         return query.getResultList();
     }
 
     @Override
     public Pago getPagoById(int id) {
-        Query query = em.createNamedQuery("Pagos.findByIdPago");
+        Query query = em.createNamedQuery("Pago.findByIdPago");
         query.setParameter("idPago", id);       
         return (Pago) query.getSingleResult();
     }

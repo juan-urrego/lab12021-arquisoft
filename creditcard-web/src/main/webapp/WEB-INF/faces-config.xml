@@ -12,11 +12,11 @@
         <from-view-id>/PagoList.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>DETAILS</from-outcome>
-            <to-view-id>/pagoDetail.xhtml</to-view-id>
+            <to-view-id>/PagoDetail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/pagoDetail.xhtml</from-view-id>
+        <from-view-id>/PagoDetail.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>LIST</from-outcome>
             <to-view-id>/PagoList.xhtml</to-view-id>

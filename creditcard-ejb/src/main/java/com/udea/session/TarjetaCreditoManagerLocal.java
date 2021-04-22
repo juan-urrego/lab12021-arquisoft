@@ -5,6 +5,8 @@
  */
 package com.udea.session;
 
+import com.udea.persistence.TarjetaCredito;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -15,5 +17,7 @@ import javax.ejb.Local;
 public interface TarjetaCreditoManagerLocal {
 
     boolean existTarjetaById(int id);
+
+    List<TarjetaCredito> getTarjetaCreditos();
     
 }

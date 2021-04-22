@@ -9,18 +9,30 @@
     </h:head>
     <h:body>
         Hello from Facelets
-        
+
         <f:view>
 
 
             <h:form>
                 <h1><h:outputText value="List"/></h1>
-                <p:dataTable value="#{pagoMBean.pagos}" var="item">
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdPago"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idPago}"/>
+                <p:dataTable value="#{pagoMBean.pagos}" var="item"
+                             paginator="true"
+                             rows="10"
+                             scrollable="true"
+                             scrollWidth="100%"
+                             scrollHeight="950"
+                             rendered="true"
+                             resizableColumns="true"
+                             sortMode="multiple"
+                             emptyMessage="No hay datos"
+                             widgetVar="customerTable">
+                    <p:column headerText="PagoId"
+                              sortBy="#{item.idPago}"
+                              filterBy="#{item.idPago}"
+                              filterMatchMode="contains">
+                        <h:commandLink action="#{pagoMBean.showDetails(item)}"
+                                       value="#{item.idPago}"/>
+                        
                     </p:column>
                     <p:column>
                         <f:facet name="header">
@@ -38,13 +50,7 @@
                         <f:facet name="header">
                             <h:outputText value="TarjetasCreditosIdTarjeta"/>
                         </f:facet>
-                        <h:outputText value="#{item.tarjetasCreditosIdTarjeta}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="TarjetaCredito"/>
-                        </f:facet>
-                        <h:outputText value="#{item.tarjetaCredito}"/>
+                        <h:outputText value="#{item.idTarjetaCredito}"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
