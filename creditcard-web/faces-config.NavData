@@ -3,9 +3,10 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="Pagos.xhtml" x="448" y="350" zoom="true"/>
+        <Node id="ErrorTarjetaCredito.xhtml" x="264" y="447" zoom="true"/>
         <Node id="PagoDetail.xhtml" x="383" y="46" zoom="true"/>
-        <Node id="PagoList.xhtml" x="436" y="185" zoom="true"/>
         <Node id="index.html" x="150" y="300" zoom="true"/>
+        <Node id="PagoList.xhtml" x="436" y="185" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

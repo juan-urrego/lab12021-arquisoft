@@ -76,6 +76,7 @@ public class PagoMBean implements Serializable {
     public String pago(){
         pago = new Pago();
         tarjetaCredito = new TarjetaCredito();
+        pago.setValorPago(500);
         cliente = new Cliente();
         return "PAGO";
     }
@@ -87,15 +88,13 @@ public class PagoMBean implements Serializable {
     
     
     public String pagar(){
-        try {
+        
             if (pagoManager.idTarjetaInvalid(tarjetaCredito.getIdTarjeta())) {
-                this.pago();
+                return "ERRORTARJETA";
             }
             pago= pagoManager.savePago(pago, tarjetaCredito, cliente);
             return "SAVED";
-        }catch(NullPointerException e){
-            return "LIST";
-        }
+        
     }
     
     /*public String getTarjetaCredito() {      

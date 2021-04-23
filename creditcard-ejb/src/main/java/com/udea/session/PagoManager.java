@@ -8,6 +8,7 @@ package com.udea.session;
 import com.udea.persistence.Cliente;
 import com.udea.persistence.Pago;
 import com.udea.persistence.TarjetaCredito;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -43,15 +44,14 @@ public class PagoManager implements PagoManagerLocal {
         return "Error";
     }
     
+    @Override
     public boolean idTarjetaInvalid(int id){
-        if (this.calcularTipoTarjeta(id).equals("Error")){
-            return true;
-        }
-        return false;
+        return this.calcularTipoTarjeta(id).equals("Error");
     }
     
     public String calcularTimeStamp(){
-        return "";
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        return timestamp.toString();
     }
     
     @Override
@@ -59,6 +59,7 @@ public class PagoManager implements PagoManagerLocal {
         tarjetaCredito.setClientesIdCliente(cliente);
         tarjetaCredito.setTipoTarjeta(this.calcularTipoTarjeta(tarjetaCredito.getIdTarjeta()));
         pago.setTarjetasCreditosIdTarjeta(tarjetaCredito);
+        pago.setTimeStampPago(this.calcularTimeStamp());
         return em.merge(pago);
     }
 

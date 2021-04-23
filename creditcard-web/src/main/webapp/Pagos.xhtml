@@ -18,7 +18,7 @@
                 <p:panelGrid columns="2">
 
                     <p:outputLabel value="Numero de identificacion" for="idCliente" />
-                    <p:inputText id="idCliente" value="#{pagoMBean.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The idCliente field is required."/>
+                    <p:inputNumber id="idCliente" value="#{pagoMBean.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The idCliente field is required."/>
 
                     <p:outputLabel value="Nombre del cliente" for="nombreCliente" />
                     <p:inputText id="nombreCliente" value="#{pagoMBean.cliente.nombreCliente}" title="NombreCliente" required="true" requiredMessage="The nombreCliente field is required."/>
@@ -27,17 +27,16 @@
                     <p:inputText id="emailCliente" value="#{pagoMBean.cliente.emailCliente}" title="EmailCliente" required="true" requiredMessage="The emailCliente field is required."/>
 
                     <p:outputLabel value="Codigo de seguridad" for="cvvTarjeta" />
-                    <p:inputText id="cvvTarjeta" value="#{pagoMBean.tarjetaCredito.cvvTarjeta}" title="CvvTarjeta" required="true" requiredMessage="The cvvTarjeta field is required."/>
+                    <p:inputNumber id="cvvTarjeta" value="#{pagoMBean.tarjetaCredito.cvvTarjeta}" title="CvvTarjeta" required="true" requiredMessage="The cvvTarjeta field is required." maxValue="999" minValue="0"/>
 
                     <p:outputLabel value="Fecha de vencimiento" for="fechaTarjeta" />
                     <p:inputText id="fechaTarjeta" value="#{pagoMBean.tarjetaCredito.fechaTarjeta}" title="FechaTarjeta" required="true" requiredMessage="The fechaTarjeta field is required."/>
 
                     <p:outputLabel value="Numero de tarjeta" for="numeroTarjeta" />
-                    <p:inputNumber id="numeroTarjeta" value="#{pagoMBean.tarjetaCredito.idTarjeta}"  required="true" requiredMessage="The numeroTarjeta field is required." minValue="11111"/>
-                    <f:validator validatorId="idTarjetaValidator" />
+                    <p:inputNumber id="numeroTarjeta" value="#{pagoMBean.tarjetaCredito.idTarjeta}"  required="true" requiredMessage="The numeroTarjeta field is required." maxValue="9999999999999999999"/>                    
 
                     <p:outputLabel value="Valor de pago" for="valorPago" />
-                    <p:inputText id="valorPago" value="#{pagoMBean.pago.valorPago}" title="ValorPago" required="true" requiredMessage="The ValorPago field is required."/>
+                    <p:inputNumber id="valorPago" value="#{pagoMBean.pago.valorPago}" title="ValorPago" required="true" requiredMessage="The ValorPago field is required." minValue="500" maxValue="10000"/>
 
                     <h1>Aca va el captcha</h1>
 
