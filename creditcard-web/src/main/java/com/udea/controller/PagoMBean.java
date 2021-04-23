@@ -93,6 +93,7 @@ public class PagoMBean implements Serializable {
                 return "ERRORTARJETA";
             }
             pago= pagoManager.savePago(pago, tarjetaCredito, cliente);
+            refresh();
             return "SAVED";
         
     }

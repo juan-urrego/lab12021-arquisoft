@@ -7,14 +7,13 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body>        
 
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="Create/Edit"/></h1>
+                <h1><h:outputText value="Pago"/></h1>
                 <p:panelGrid columns="2">
 
                     <p:outputLabel value="Numero de identificacion" for="idCliente" />
@@ -33,16 +32,20 @@
                     <p:inputText id="fechaTarjeta" value="#{pagoMBean.tarjetaCredito.fechaTarjeta}" title="FechaTarjeta" required="true" requiredMessage="The fechaTarjeta field is required."/>
 
                     <p:outputLabel value="Numero de tarjeta" for="numeroTarjeta" />
-                    <p:inputNumber id="numeroTarjeta" value="#{pagoMBean.tarjetaCredito.idTarjeta}"  required="true" requiredMessage="The numeroTarjeta field is required." maxValue="9999999999999999999"/>                    
+                    <p:inputNumber id="numeroTarjeta" value="#{pagoMBean.tarjetaCredito.idTarjeta}"  required="true" requiredMessage="The numeroTarjeta field is required." maxValue="999999999" minValue="0"/>                    
 
                     <p:outputLabel value="Valor de pago" for="valorPago" />
                     <p:inputNumber id="valorPago" value="#{pagoMBean.pago.valorPago}" title="ValorPago" required="true" requiredMessage="The ValorPago field is required." minValue="500" maxValue="10000"/>
 
-                    <h1>Aca va el captcha</h1>
-
                    
-                    <h:commandButton id="save" value="Save" action="#{pagoMBean.pagar()}"/>    
+                   
+                   
                 </p:panelGrid>
+                <h2>Captcha</h2>
+                <p:messages id="msg"/>
+                <p:captcha id="captcha"></p:captcha>
+                <br></br>
+                 <h:commandButton id="save" value="Save" action="#{pagoMBean.pagar()}"/>    
             </h:form>
         </f:view>
 

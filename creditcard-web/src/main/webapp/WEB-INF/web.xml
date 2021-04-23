@@ -21,4 +21,13 @@
     <welcome-file-list>
         <welcome-file>faces/PagoList.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <context-param>
+        <param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+        <param-value>6Lc_v7YaAAAAAPf57l4GCMzdFKzS6ErcUaSL0Sy1</param-value>
+    </context-param>
+    <context-param>
+        <param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+        <param-value>6Lc_v7YaAAAAACdB-6hQLscl8WFTu36ZQUjMbrPl</param-value>
+    </context-param>
 </web-app>

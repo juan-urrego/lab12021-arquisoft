@@ -7,14 +7,13 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body>        
 
         <f:view>
 
 
             <h:form>
-                <h1><h:outputText value="List"/></h1>
+                <h1><h:outputText value="Lista"/></h1>
                 <h:commandButton id="back" value="Pagar" action="#{pagoMBean.pago()}"/>
                 <br></br><br></br>
                 
@@ -39,19 +38,25 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ValorPago"/>
+                            <h:outputText value="Valor de transaccion"/>
                         </f:facet>
                         <h:outputText value="#{item.valorPago}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="TimeStampPago"/>
+                            <h:outputText value="Fecha de pago"/>
                         </f:facet>
                         <h:outputText value="#{item.timeStampPago}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="TarjetasCreditosIdTarjeta"/>
+                            <h:outputText value="Nombre del cliente"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tarjetasCreditosIdTarjeta.clientesIdCliente.nombreCliente}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Numero de tarjeta de credito"/>
                         </f:facet>
                         <h:outputText value="#{item.idTarjetaCredito}"/>
                     </p:column>

@@ -26,9 +26,11 @@ public class PagoManager implements PagoManagerLocal {
     private EntityManager em;
     
     
-    public String calcularTipoTarjeta(int id){
+    public String calcularTipoTarjeta(int id){       
         int b = Integer.toString(id).length();
-        id = id /(int) Math.pow(10,b-5);        
+        if ( b >= 5){
+            id = id /(int) Math.pow(10,b-5);            
+        }       
         if (id >= 11111 && id <= 22222) {
             return "American Express";
         }
