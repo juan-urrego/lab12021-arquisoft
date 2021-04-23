@@ -1,1 +1,13 @@
+com\udea\persistence\Cliente_.class
+com\udea\session\PagoManagerLocal.class
+com\udea\session\TarjetaCreditoManager.class
+com\udea\session\TarjetaCreditoManagerLocal.class
 com\udea\NewSessionBean.class
+com\udea\persistence\Pago_.class
+com\udea\session\PagoManager.class
+com\udea\persistence\Cliente.class
+com\udea\persistence\Pago.class
+com\udea\persistence\TarjetaCredito_.class
+com\udea\session\ClienteManager.class
+com\udea\session\ClienteManagerLocal.class
+com\udea\persistence\TarjetaCredito.class

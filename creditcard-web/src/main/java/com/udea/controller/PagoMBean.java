@@ -5,6 +5,7 @@
  */
 package com.udea.controller;
 
+import com.udea.persistence.Cliente;
 import com.udea.persistence.Pago;
 import com.udea.persistence.TarjetaCredito;
 import com.udea.session.ClienteManagerLocal;
@@ -13,7 +14,7 @@ import com.udea.session.TarjetaCreditoManagerLocal;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.model.SelectItem;
+
 
 /**
  *
@@ -31,6 +32,8 @@ public class PagoMBean implements Serializable {
     private TarjetaCreditoManagerLocal tarjetaCreditoManager;
     
     private Pago pago;
+    private TarjetaCredito tarjetaCredito;
+    private Cliente cliente;
     private List<Pago> pagos;
 
     /**
@@ -50,22 +53,49 @@ public class PagoMBean implements Serializable {
         pagos = pagoManager.getAllPagos();
     }
     
-    public Pago GetPago() {
+    public Pago getPago() {
         return pago;
     }
+
+    public TarjetaCredito getTarjetaCredito() {
+        return tarjetaCredito;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    
     
     public String showDetails(Pago pago) {
         this.pago = pago;
         return "DETAILS";
     }
     
-    public String update() {
-        pago= pagoManager.savePago(pago);
-        return "SAVED";
+   
+    public String pago(){
+        pago = new Pago();
+        tarjetaCredito = new TarjetaCredito();
+        cliente = new Cliente();
+        return "PAGO";
     }
     
-    public String list(){
+    public String list(){       
         return "LIST";
+    }
+   
+    
+    
+    public String pagar(){
+        try {
+            if (pagoManager.idTarjetaInvalid(tarjetaCredito.getIdTarjeta())) {
+                this.pago();
+            }
+            pago= pagoManager.savePago(pago, tarjetaCredito, cliente);
+            return "SAVED";
+        }catch(NullPointerException e){
+            return "LIST";
+        }
     }
     
     /*public String getTarjetaCredito() {      

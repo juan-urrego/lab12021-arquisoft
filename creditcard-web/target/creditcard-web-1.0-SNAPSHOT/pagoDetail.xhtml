@@ -16,39 +16,39 @@
                 <h1><h:outputText value="Details"/></h1>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Identificacion de pago" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().idPago}" />
+                    <p:outputLabel value="#{pagoMBean.pago.idPago}" />
                     
                     <p:outputLabel value="Valor del pago" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().valorPago}" />
+                    <p:outputLabel value="#{pagoMBean.pago.valorPago}" />
                     
                     <p:outputLabel value="Fecha de pago" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().timeStampPago}" />
+                    <p:outputLabel value="#{pagoMBean.pago.timeStampPago}" />
                     
                     <p:outputLabel value="Numero de tarjeta" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().idTarjetaCredito}" />
+                    <p:outputLabel value="#{pagoMBean.pago.idTarjetaCredito}" />
                     
                     <p:outputLabel value="CVV Tarjeta" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.cvvTarjeta}" />
+                    <p:outputLabel value="#{pagoMBean.pago.tarjetasCreditosIdTarjeta.cvvTarjeta}" />
                                        
                     <p:outputLabel value="Fecha de vencimiento de tarjeta" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.fechaTarjeta}" />
+                    <p:outputLabel value="#{pagoMBean.pago.tarjetasCreditosIdTarjeta.fechaTarjeta}" />
                     
                     <p:outputLabel value="Tipo de tarjeta" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.tipoTarjeta}" />
+                    <p:outputLabel value="#{pagoMBean.pago.tarjetasCreditosIdTarjeta.tipoTarjeta}" />
                     
                     <p:outputLabel value="Nombre del Usuario" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.nombreCliente}" />
+                    <p:outputLabel value="#{pagoMBean.pago.tarjetasCreditosIdTarjeta.clientesIdCliente.nombreCliente}" />
                     
                     <p:outputLabel value="Email del Usuario" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.emailCliente}" />
+                    <p:outputLabel value="#{pagoMBean.pago.tarjetasCreditosIdTarjeta.clientesIdCliente.emailCliente}" />
                     
                     <p:outputLabel value="Numero de identificacion del usuario" />
-                    <p:outputLabel value="#{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.idCliente}" />
+                    <p:outputLabel value="#{pagoMBean.pago.tarjetasCreditosIdTarjeta.clientesIdCliente.idCliente}" />
                     
                     <p:outputLabel value="QR code" />
-                    <p:barcode value="Identificacion del cliente: #{pagoMBean.GetPago().tarjetasCreditosIdTarjeta.clientesIdCliente.idCliente}  
-                               Valor de transferencia: #{pagoMBean.GetPago().valorPago}  
-                               Fecha de consignacion: #{pagoMBean.GetPago().timeStampPago}" 
+                    <p:barcode value="Identificacion del cliente: #{pagoMBean.pago.tarjetasCreditosIdTarjeta.clientesIdCliente.idCliente}  
+                               Valor de transferencia: #{pagoMBean.pago.valorPago}  
+                               Fecha de consignacion: #{pagoMBean.pago.timeStampPago}" 
                               type="qr" height="150px" width="150px" /> 
                       
                 </p:panelGrid>

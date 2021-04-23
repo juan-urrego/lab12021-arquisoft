@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel value="Numero de identificacion" for="idCliente" />
+                    <p:inputText id="idCliente" value="#{pagoMBean.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The idCliente field is required."/>
+
+                    <p:outputLabel value="Nombre del cliente" for="nombreCliente" />
+                    <p:inputText id="nombreCliente" value="#{pagoMBean.cliente.nombreCliente}" title="NombreCliente" required="true" requiredMessage="The nombreCliente field is required."/>
+
+                    <p:outputLabel value="Email del cliente" for="emailCliente" />
+                    <p:inputText id="emailCliente" value="#{pagoMBean.cliente.emailCliente}" title="EmailCliente" required="true" requiredMessage="The emailCliente field is required."/>
+
+                    <p:outputLabel value="Codigo de seguridad" for="cvvTarjeta" />
+                    <p:inputText id="cvvTarjeta" value="#{pagoMBean.tarjetaCredito.cvvTarjeta}" title="CvvTarjeta" required="true" requiredMessage="The cvvTarjeta field is required."/>
+
+                    <p:outputLabel value="Fecha de vencimiento" for="fechaTarjeta" />
+                    <p:inputText id="fechaTarjeta" value="#{pagoMBean.tarjetaCredito.fechaTarjeta}" title="FechaTarjeta" required="true" requiredMessage="The fechaTarjeta field is required."/>
+
+                    <p:outputLabel value="Numero de tarjeta" for="numeroTarjeta" />
+                    <p:inputNumber id="numeroTarjeta" value="#{pagoMBean.tarjetaCredito.idTarjeta}"  required="true" requiredMessage="The numeroTarjeta field is required." minValue="11111"/>
+                    <f:validator validatorId="idTarjetaValidator" />
+
+                    <p:outputLabel value="Valor de pago" for="valorPago" />
+                    <p:inputText id="valorPago" value="#{pagoMBean.pago.valorPago}" title="ValorPago" required="true" requiredMessage="The ValorPago field is required."/>
+
+                    <h1>Aca va el captcha</h1>
+
+                   
+                    <h:commandButton id="save" value="Save" action="#{pagoMBean.pagar()}"/>    
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

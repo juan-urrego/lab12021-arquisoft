@@ -5,7 +5,9 @@
  */
 package com.udea.session;
 
+import com.udea.persistence.Cliente;
 import com.udea.persistence.Pago;
+import com.udea.persistence.TarjetaCredito;
 import java.util.List;
 import java.util.Set;
 import javax.ejb.Local;
@@ -17,10 +19,12 @@ import javax.ejb.Local;
 @Local
 public interface PagoManagerLocal {
 
-    Pago savePago(Pago pago);
+    Pago savePago(Pago pago, TarjetaCredito tarjetaCredito, Cliente cliente);
 
     List<Pago> getAllPagos();
 
     Pago getPagoById(int id);
+    
+    boolean idTarjetaInvalid(int id);
     
 }

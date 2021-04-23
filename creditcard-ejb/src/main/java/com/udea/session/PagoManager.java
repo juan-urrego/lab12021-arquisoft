@@ -5,9 +5,10 @@
  */
 package com.udea.session;
 
+import com.udea.persistence.Cliente;
 import com.udea.persistence.Pago;
+import com.udea.persistence.TarjetaCredito;
 import java.util.List;
-import java.util.Set;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,9 +24,41 @@ public class PagoManager implements PagoManagerLocal {
     @PersistenceContext(unitName = "com.udea_creditcard-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
     
-   
+    
+    public String calcularTipoTarjeta(int id){
+        int b = Integer.toString(id).length();
+        id = id /(int) Math.pow(10,b-5);        
+        if (id >= 11111 && id <= 22222) {
+            return "American Express";
+        }
+        if (id >= 33334 && id <= 44444) {
+            return "Diners";
+        }
+        if (id >= 55555 && id <= 66666){
+            return "Visa";
+        }
+        if (id >= 77777 && id <= 88888){
+            return "MasterCard";
+        }
+        return "Error";
+    }
+    
+    public boolean idTarjetaInvalid(int id){
+        if (this.calcularTipoTarjeta(id).equals("Error")){
+            return true;
+        }
+        return false;
+    }
+    
+    public String calcularTimeStamp(){
+        return "";
+    }
+    
     @Override
-    public Pago savePago(Pago pago) {
+    public Pago savePago(Pago pago, TarjetaCredito tarjetaCredito, Cliente cliente) {
+        tarjetaCredito.setClientesIdCliente(cliente);
+        tarjetaCredito.setTipoTarjeta(this.calcularTipoTarjeta(tarjetaCredito.getIdTarjeta()));
+        pago.setTarjetasCreditosIdTarjeta(tarjetaCredito);
         return em.merge(pago);
     }
 

@@ -15,6 +15,9 @@
 
             <h:form>
                 <h1><h:outputText value="List"/></h1>
+                <h:commandButton id="back" value="Pagar" action="#{pagoMBean.pago()}"/>
+                <br></br><br></br>
+                
                 <p:dataTable value="#{pagoMBean.pagos}" var="item"
                              paginator="true"
                              rows="10"
